@@ -8,20 +8,21 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Rick and Morty-->
+        <!--Main-->
         <scene sceneID="tne-QT-ifu">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="RickAndMortyAPI" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zNr-RS-pJX">
-                                <rect key="frame" x="125.66666666666667" y="195.66666666666666" width="141.66666666666663" height="30"/>
+                                <rect key="frame" x="78.666666666666671" y="195.66666666666666" width="235.66666666666663" height="51"/>
                                 <color key="backgroundColor" systemColor="systemOrangeColor"/>
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="Fetch Characters"/>
+                                <state key="normal" title="Fetch Rick and Morty"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                         <integer key="value" value="10"/>
@@ -35,15 +36,15 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="zNr-RS-pJX" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.36" id="fEl-ve-fAy"/>
+                            <constraint firstItem="zNr-RS-pJX" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.06" id="MGy-ap-0u8"/>
+                            <constraint firstItem="zNr-RS-pJX" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.6" id="fEl-ve-fAy"/>
                             <constraint firstItem="zNr-RS-pJX" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" multiplier="1.9" id="hdY-ya-eCT"/>
                             <constraint firstItem="zNr-RS-pJX" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="o8A-Rr-Tfa"/>
                             <constraint firstItem="zNr-RS-pJX" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="s4w-Yb-2mv"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Rick and Morty" largeTitleDisplayMode="always" id="Y42-7J-Hcu"/>
+                    <navigationItem key="navigationItem" title="Main" largeTitleDisplayMode="always" id="Y42-7J-Hcu"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1066.4122137404579" y="26.760563380281692"/>
         </scene>
@@ -54,7 +55,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="aA8-IW-Czu">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemGray6Color"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="characterCell" rowHeight="126" id="Kbn-4u-MVE" customClass="CharacterViewCell" customModule="RickAndMortyAPI" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="50" width="393" height="126"/>
@@ -72,6 +73,9 @@
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                     <integer key="value" value="63"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                                    <integer key="value" value="4"/>
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
                                         </imageView>
@@ -112,6 +116,7 @@
                                         <constraint firstItem="7hE-wo-GqN" firstAttribute="leading" secondItem="ayk-VP-NyQ" secondAttribute="trailing" constant="44" id="zJW-uv-7RK"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" systemColor="systemGray6Color"/>
                                 <connections>
                                     <outlet property="characterImage" destination="ayk-VP-NyQ" id="R1k-cJ-erl"/>
                                     <outlet property="nameLabel" destination="2UM-pi-ih1" id="IRK-iR-iVH"/>
@@ -153,6 +158,9 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray6Color">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemOrangeColor">
             <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

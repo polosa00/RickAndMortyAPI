@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CharacterViewCell: UITableViewCell {
+final class CharacterViewCell: UITableViewCell {
 
     @IBOutlet var characterImage: UIImageView!
     
@@ -15,7 +15,8 @@ class CharacterViewCell: UITableViewCell {
     @IBOutlet var statusLabel: UILabel!
     @IBOutlet var speciesLabel: UILabel!
     
-    let networkManager = NetworkManager.shared
+    private let networkManager = NetworkManager.shared
+    
     
     func configure( with character: MovieCharacters) {
         nameLabel.text = "Name: \(character.name)"
@@ -31,9 +32,6 @@ class CharacterViewCell: UITableViewCell {
             }
         }
     }
-    
-    
-    
 }
 
 

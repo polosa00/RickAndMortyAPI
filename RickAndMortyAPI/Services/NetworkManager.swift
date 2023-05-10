@@ -7,13 +7,10 @@
 
 import Foundation
 
-
-
 enum NetworkError: Error {
     case noData
     case decodingError
 }
-
 
 final class NetworkManager {
     static let shared = NetworkManager()
@@ -32,7 +29,7 @@ final class NetworkManager {
         }
     }
     
-    func fetch<T: Decodable>(_ type: T.Type, from url: URL, completion: @escaping(Result<T, NetworkError>) -> Void) {
+    func fetchRickAndMorty(from url: URL, completion: @escaping(Result<RickAndMorty, NetworkError>) -> Void) {
         URLSession.shared.dataTask(with: url) { data, _, error in
             guard let data else {
                 completion(.failure(.noData))
@@ -42,15 +39,14 @@ final class NetworkManager {
             
             do {
                 let decoder = JSONDecoder()
-                decoder.keyDecodingStrategy = .convertFromSnakeCase
-                let dataModel = try decoder.decode(T.self, from: data)
+                let rickAndMorty = try decoder.decode(RickAndMorty.self, from: data)
+                print(rickAndMorty)
                 DispatchQueue.main.async {
-                    completion(.success(dataModel))
+                    completion(.success(rickAndMorty))
                 }
             } catch {
                 completion(.failure(.decodingError))
             }
-            
         }.resume()
     }
 }
