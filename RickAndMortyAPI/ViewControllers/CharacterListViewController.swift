@@ -19,7 +19,7 @@ final class CharacterListViewController: UITableViewController {
     // MARK: - Life Cycle ViewController
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchRic()
+        fetchRicAndMorty()
 
     }
     
@@ -39,31 +39,16 @@ final class CharacterListViewController: UITableViewController {
 
 // MARK: - Networking
 extension CharacterListViewController {
-    func fetchRic() {
-        
-//        networkManager.fetchRickAndMorty(from: linkRick) { [weak self] result in
-//            switch result {
-//            case .success(let rickAndMorty):
-//                self?.rickAndMorty = rickAndMorty
-//                print(rickAndMorty)
-//            case .failure(let error):
-//                print(error)
-//            }
-//        }
-        
-        URLSession.shared.dataTask(with: linkRickAndMorty) { data, _, error in
-            guard let data else {
-                print(error?.localizedDescription ?? "No error description")
-                return
+    func fetchRicAndMorty() {
+        networkManager.fetchRickAndMorty(from: linkRickAndMorty) { [weak self] result in
+            switch result {
+            case .success(let rickAndMorty):
+                self?.rickAndMorty = rickAndMorty
+                self?.tableView.reloadData()
+                print(rickAndMorty)
+            case .failure(let error):
+                print(error)
             }
-            do {
-                let decoder = JSONDecoder()
-                let characters = try decoder.decode(RickAndMorty.self, from: data)
-                self.rickAndMorty = characters
-                print(characters)
-            } catch {
-                print(error.localizedDescription)
-            }
-        }.resume()
+        }
     }
 }
