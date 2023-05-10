@@ -8,22 +8,21 @@
 import Foundation
 
 
-struct Results: Decodable {
-//    let count: Int
-    let characters: [MovieCharacter]
-    
+struct RickAndMorty: Decodable {
+    let info: Info
+    let results: [MovieCharacters]
 }
 
-struct MovieCharacter: Decodable {
+struct Info: Decodable {
+    let pages: Int
+    let next: URL?
+}
+
+struct MovieCharacters:Decodable {
     let name: String
     let status: String
     let species: String
-    let type: String
+    let gender: String
     let image: URL
-    let origin: Origin
-}
-
-struct Origin: Decodable {
-    let name: String
-    let url: URL
+//    let location: Location
 }

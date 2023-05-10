@@ -15,14 +15,14 @@ class CharacterViewCell: UITableViewCell {
     @IBOutlet var statusLabel: UILabel!
     @IBOutlet var originLabel: UILabel!
     
-    private let networkingManager = NetworkManager.shared
+    let networkManager = NetworkManager.shared
     
-    func configure(with character: MovieCharacter) {
+    func configure( with character: MovieCharacters) {
         nameLabel.text = character.name
         statusLabel.text = character.status
-//        originLabel.text = character.origin.name
+        originLabel.text = character.species
         
-        networkingManager.fetchImage(from: character.image) { [weak self] result in
+        networkManager.fetchImage(from: character.image) { [weak self] result in
             switch result {
             case .success(let imageData):
                 self?.characterImage.image = UIImage(data: imageData)
@@ -30,8 +30,9 @@ class CharacterViewCell: UITableViewCell {
                 print(error)
             }
         }
-        
     }
+    
+    
     
 }
 
