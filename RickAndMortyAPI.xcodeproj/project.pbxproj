@@ -13,6 +13,10 @@
 		1151696C2A0AC7DB0068014F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1151696A2A0AC7DB0068014F /* Main.storyboard */; };
 		1151696E2A0AC7DC0068014F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1151696D2A0AC7DC0068014F /* Assets.xcassets */; };
 		115169712A0AC7DC0068014F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1151696F2A0AC7DC0068014F /* LaunchScreen.storyboard */; };
+		115169792A0ACB900068014F /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115169782A0ACB900068014F /* Character.swift */; };
+		1151697C2A0ACFA00068014F /* CharacterListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1151697B2A0ACFA00068014F /* CharacterListViewController.swift */; };
+		1151697E2A0ACFD90068014F /* CharacterViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1151697D2A0ACFD80068014F /* CharacterViewCell.swift */; };
+		115169802A0AD4800068014F /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1151697F2A0AD4800068014F /* NetworkManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +28,10 @@
 		1151696D2A0AC7DC0068014F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		115169702A0AC7DC0068014F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		115169722A0AC7DC0068014F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		115169782A0ACB900068014F /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
+		1151697B2A0ACFA00068014F /* CharacterListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListViewController.swift; sourceTree = "<group>"; };
+		1151697D2A0ACFD80068014F /* CharacterViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterViewCell.swift; sourceTree = "<group>"; };
+		1151697F2A0AD4800068014F /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,13 +66,25 @@
 			children = (
 				115169642A0AC7DB0068014F /* AppDelegate.swift */,
 				115169662A0AC7DB0068014F /* SceneDelegate.swift */,
+				1151697B2A0ACFA00068014F /* CharacterListViewController.swift */,
 				115169682A0AC7DB0068014F /* ViewController.swift */,
+				1151697D2A0ACFD80068014F /* CharacterViewCell.swift */,
+				1151697F2A0AD4800068014F /* NetworkManager.swift */,
+				1151697A2A0ACB950068014F /* Models */,
 				1151696A2A0AC7DB0068014F /* Main.storyboard */,
 				1151696D2A0AC7DC0068014F /* Assets.xcassets */,
 				1151696F2A0AC7DC0068014F /* LaunchScreen.storyboard */,
 				115169722A0AC7DC0068014F /* Info.plist */,
 			);
 			path = RickAndMortyAPI;
+			sourceTree = "<group>";
+		};
+		1151697A2A0ACB950068014F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				115169782A0ACB900068014F /* Character.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,9 +158,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1151697E2A0ACFD90068014F /* CharacterViewCell.swift in Sources */,
 				115169692A0AC7DB0068014F /* ViewController.swift in Sources */,
 				115169652A0AC7DB0068014F /* AppDelegate.swift in Sources */,
+				1151697C2A0ACFA00068014F /* CharacterListViewController.swift in Sources */,
 				115169672A0AC7DB0068014F /* SceneDelegate.swift in Sources */,
+				115169792A0ACB900068014F /* Character.swift in Sources */,
+				115169802A0AD4800068014F /* NetworkManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
