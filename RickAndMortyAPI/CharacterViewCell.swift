@@ -13,14 +13,14 @@ class CharacterViewCell: UITableViewCell {
     
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var statusLabel: UILabel!
-    @IBOutlet var originLabel: UILabel!
+    @IBOutlet var speciesLabel: UILabel!
     
     let networkManager = NetworkManager.shared
     
     func configure( with character: MovieCharacters) {
-        nameLabel.text = character.name
-        statusLabel.text = character.status
-        originLabel.text = character.species
+        nameLabel.text = "Name: \(character.name)"
+        statusLabel.text = "Status: \(character.status)"
+        speciesLabel.text = "Species: \(character.species)"
         
         networkManager.fetchImage(from: character.image) { [weak self] result in
             switch result {
