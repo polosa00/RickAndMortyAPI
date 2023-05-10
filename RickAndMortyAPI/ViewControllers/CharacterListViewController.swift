@@ -9,11 +9,9 @@ import UIKit
 
 final class CharacterListViewController: UITableViewController {
     
-    // MARK: - Properties
-    private let linkRickAndMorty: URL = URL(string: "https://rickandmortyapi.com/api/character")!
+    // MARK: - Private Properties
     private let networkManager = NetworkManager.shared
     private var rickAndMorty: RickAndMorty?
-    
     
     // MARK: - Life Cycle ViewController
     override func viewDidLoad() {
@@ -43,7 +41,7 @@ final class CharacterListViewController: UITableViewController {
 // MARK: - Networking
 extension CharacterListViewController {
     func fetchRicAndMorty() {
-        networkManager.fetchRickAndMorty(from: linkRickAndMorty) { [weak self] result in
+        networkManager.fetchRickAndMorty(from: networkManager.linkRickAndMorty) { [weak self] result in
             switch result {
             case .success(let rickAndMorty):
                 self?.rickAndMorty = rickAndMorty

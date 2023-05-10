@@ -14,6 +14,8 @@ enum NetworkError: Error {
 
 final class NetworkManager {
     static let shared = NetworkManager()
+   
+    let linkRickAndMorty: URL = URL(string: "https://rickandmortyapi.com/api/character")!
     
     private init() {}
     
