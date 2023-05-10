@@ -12,8 +12,7 @@ final class CharacterListViewController: UITableViewController {
     // MARK: - Properties
     private let linkRickAndMorty: URL = URL(string: "https://rickandmortyapi.com/api/character")!
     private let networkManager = NetworkManager.shared
-   
-    var rickAndMorty: RickAndMorty?
+    private var rickAndMorty: RickAndMorty?
     
     
     // MARK: - Life Cycle ViewController
