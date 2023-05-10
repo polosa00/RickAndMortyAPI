@@ -19,9 +19,9 @@ final class CharacterViewCell: UITableViewCell {
     
     
     func configure( with character: MovieCharacters) {
-        nameLabel.text = "Name: \(character.name)"
-        statusLabel.text = "Status: \(character.status)"
-        speciesLabel.text = "Species: \(character.species)"
+        nameLabel.text = character.name
+        statusLabel.text = character.status
+        speciesLabel.text = character.species
         
         networkManager.fetchImage(from: character.image) { [weak self] result in
             switch result {
