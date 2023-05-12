@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Alamofire
 
 enum NetworkError: Error {
     case noData
@@ -15,7 +16,7 @@ enum NetworkError: Error {
 final class NetworkManager {
     static let shared = NetworkManager()
    
-    let linkRickAndMorty: URL = URL(string: "https://rickandmortyapi.com/api/character")!
+    let linkRickAndMorty = URL(string: "https://rickandmortyapi.com/api/character")!
     
     private init() {}
     
@@ -31,7 +32,29 @@ final class NetworkManager {
         }
     }
     
-    func fetchRickAndMorty(from url: URL, completion: @escaping(Result<RickAndMorty, NetworkError>) -> Void) {
+    
+    func fetchRAM(from url: URL?, components: @escaping(Result<RickAndMorty,AFError>) -> Void) {
+        guard let url = url else {
+            components(.failure(.explicitlyCancelled))
+            return
+        }
+        AF.request(url).validate()
+            .responseDecodable(of: RickAndMorty.self) { dataResponse in
+                switch dataResponse.result {
+                case .success(let rickAndMorty):
+                    components(.success(rickAndMorty))
+                case .failure(let error):
+                    components(.failure(error))
+                }
+            }
+    }
+    
+    func fetchRickAndMorty(from url: URL?, completion: @escaping(Result<RickAndMorty, NetworkError>) -> Void) {
+        guard let url = url else {
+            print("invalid link")
+            return
+        }
+        
         URLSession.shared.dataTask(with: url) { data, _, error in
             guard let data else {
                 completion(.failure(.noData))
@@ -51,4 +74,5 @@ final class NetworkManager {
             }
         }.resume()
     }
+
 }

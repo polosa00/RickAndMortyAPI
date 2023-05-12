@@ -14,7 +14,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="aA8-IW-Czu">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemGray6Color"/>
+                        <color key="backgroundColor" systemColor="systemGray2Color"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="characterCell" rowHeight="126" id="Kbn-4u-MVE" customClass="CharacterViewCell" customModule="RickAndMortyAPI" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="50" width="393" height="126"/>
@@ -24,14 +24,14 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ayk-VP-NyQ">
-                                            <rect key="frame" x="10" y="0.0" width="122" height="122"/>
+                                            <rect key="frame" x="20" y="13" width="100" height="100"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="122" id="AZF-nK-wRs"/>
-                                                <constraint firstAttribute="height" constant="122" id="wAE-33-sNt"/>
+                                                <constraint firstAttribute="width" constant="100" id="60h-5I-t3G"/>
+                                                <constraint firstAttribute="height" constant="100" id="KNN-tZ-wbi"/>
                                             </constraints>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                    <integer key="value" value="61"/>
+                                                    <integer key="value" value="50"/>
                                                 </userDefinedRuntimeAttribute>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
                                                     <integer key="value" value="4"/>
@@ -39,7 +39,7 @@
                                             </userDefinedRuntimeAttributes>
                                         </imageView>
                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="skq-9o-TWG">
-                                            <rect key="frame" x="152" y="11" width="237" height="104"/>
+                                            <rect key="frame" x="135" y="11" width="237" height="104"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="k9b-2S-dps">
                                                     <rect key="frame" x="0.0" y="0.0" width="65" height="104"/>
@@ -99,14 +99,11 @@
                                         </stackView>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="ayk-VP-NyQ" firstAttribute="centerY" secondItem="s4l-0g-dYL" secondAttribute="centerY" id="2m4-on-rf6"/>
                                         <constraint firstAttribute="bottom" secondItem="skq-9o-TWG" secondAttribute="bottom" constant="11" id="BVd-PD-xEF"/>
-                                        <constraint firstItem="ayk-VP-NyQ" firstAttribute="top" secondItem="s4l-0g-dYL" secondAttribute="top" id="EJL-XX-GvC"/>
-                                        <constraint firstAttribute="bottom" secondItem="ayk-VP-NyQ" secondAttribute="bottom" constant="4" id="Kki-BN-Ghp"/>
-                                        <constraint firstItem="ayk-VP-NyQ" firstAttribute="top" secondItem="s4l-0g-dYL" secondAttribute="top" id="Q4v-Tt-AsD"/>
+                                        <constraint firstItem="ayk-VP-NyQ" firstAttribute="leading" secondItem="s4l-0g-dYL" secondAttribute="leading" constant="20" id="DeU-e4-vJD"/>
                                         <constraint firstItem="skq-9o-TWG" firstAttribute="top" secondItem="s4l-0g-dYL" secondAttribute="top" constant="11" id="a8m-dc-7K3"/>
-                                        <constraint firstItem="skq-9o-TWG" firstAttribute="leading" secondItem="ayk-VP-NyQ" secondAttribute="trailing" constant="20" id="klE-Rj-cC5"/>
-                                        <constraint firstAttribute="bottom" secondItem="ayk-VP-NyQ" secondAttribute="bottom" constant="4" id="nTB-gp-390"/>
-                                        <constraint firstItem="ayk-VP-NyQ" firstAttribute="leading" secondItem="s4l-0g-dYL" secondAttribute="leading" constant="10" id="oeY-us-REN"/>
+                                        <constraint firstItem="skq-9o-TWG" firstAttribute="leading" secondItem="ayk-VP-NyQ" secondAttribute="trailing" constant="15" id="f2d-ys-lW8"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" systemColor="systemGray6Color"/>
@@ -123,7 +120,18 @@
                             <outlet property="delegate" destination="yHn-yX-l4a" id="fX7-K6-jbU"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="RICK and MORTY" id="aR3-60-WRo"/>
+                    <navigationItem key="navigationItem" title="RICK and MORTY" id="aR3-60-WRo">
+                        <barButtonItem key="leftBarButtonItem" title="Prew" id="HCa-Is-n6h">
+                            <connections>
+                                <action selector="updateData:" destination="yHn-yX-l4a" id="Hvj-bX-v3K"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" tag="1" title="Next" id="ETC-jm-QIS">
+                            <connections>
+                                <action selector="updateData:" destination="yHn-yX-l4a" id="4CH-ca-mlJ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="COX-c2-wb0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -139,6 +147,9 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="3BX-0o-maL">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="yHn-yX-l4a" kind="relationship" relationship="rootViewController" id="f9C-Mp-ahl"/>
                     </connections>
@@ -149,6 +160,9 @@
         </scene>
     </scenes>
     <resources>
+        <systemColor name="systemGray2Color">
+            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemGray6Color">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

@@ -18,7 +18,7 @@ final class CharacterViewCell: UITableViewCell {
     private let networkManager = NetworkManager.shared
     
     
-    func configure( with character: MovieCharacters) {
+    func configure( with character: Character) {
         nameLabel.text = character.name
         statusLabel.text = character.status
         speciesLabel.text = character.species
