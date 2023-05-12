@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		11195DB22A0D7A8A002267DD /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 11195DB12A0D7A8A002267DD /* Alamofire */; };
+		11195DB42A0E7ECC002267DD /* CharacterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11195DB32A0E7ECC002267DD /* CharacterViewController.swift */; };
 		115169652A0AC7DB0068014F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115169642A0AC7DB0068014F /* AppDelegate.swift */; };
 		115169672A0AC7DB0068014F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115169662A0AC7DB0068014F /* SceneDelegate.swift */; };
 		1151696C2A0AC7DB0068014F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1151696A2A0AC7DB0068014F /* Main.storyboard */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		11195DB32A0E7ECC002267DD /* CharacterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterViewController.swift; sourceTree = "<group>"; };
 		115169612A0AC7DB0068014F /* RickAndMortyAPI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RickAndMortyAPI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		115169642A0AC7DB0068014F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		115169662A0AC7DB0068014F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -87,6 +89,7 @@
 			isa = PBXGroup;
 			children = (
 				1151697B2A0ACFA00068014F /* CharacterListViewController.swift */,
+				11195DB32A0E7ECC002267DD /* CharacterViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -213,6 +216,7 @@
 			files = (
 				1151697E2A0ACFD90068014F /* CharacterViewCell.swift in Sources */,
 				115169652A0AC7DB0068014F /* AppDelegate.swift in Sources */,
+				11195DB42A0E7ECC002267DD /* CharacterViewController.swift in Sources */,
 				1151697C2A0ACFA00068014F /* CharacterListViewController.swift in Sources */,
 				115169672A0AC7DB0068014F /* SceneDelegate.swift in Sources */,
 				115169792A0ACB900068014F /* RickAndMorty.swift in Sources */,

@@ -37,16 +37,17 @@ final class CharacterListViewController: UITableViewController {
         return cell
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let indexPath = tableView.indexPathForSelectedRow else { return }
+        let character = rickAndMorty?.results[indexPath.row]
+        guard let characterVC = segue.destination as? CharacterViewController else { return }
+        characterVC.character = character
+    }
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
-    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        guard let results = rickAndMorty?.results else { return }
-        if results.count - indexPath.row <= 3 {
-            getNextPage(from: nextPage)
-        }
-    }
     
     @IBAction func updateData(_ sender: UIBarButtonItem) {
         if sender.tag == 1 {
@@ -65,6 +66,7 @@ final class CharacterListViewController: UITableViewController {
 //            fetchRickAandMorty(from: prevUrl)
         }
     }
+    
     
     
     
@@ -95,21 +97,6 @@ extension CharacterListViewController {
             }
         }
     }
-    
-    private func getNextPage(from url: URL?) {
-        networkManager.fetchRAM(from: url) { [weak self] result in
-            guard let self = self  else { return }
-            switch result {
-            case .success(let rickAndMorty):
-                self.rickAndMorty?.results.append(contentsOf: rickAndMorty.results)
-                self.nextPage = rickAndMorty.info.next
-                self.tableView.reloadData()
-            case .failure(let error):
-                print(error)
-            }
-        }
-    }
-
 }
 
 
