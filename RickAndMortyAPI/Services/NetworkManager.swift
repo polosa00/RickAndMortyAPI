@@ -33,7 +33,7 @@ final class NetworkManager {
     }
     
     
-    func fetchRAM(from url: URL?, components: @escaping(Result<RickAndMorty,AFError>) -> Void) {
+    func fetchWithAF(from url: URL?, components: @escaping(Result<RickAndMorty,AFError>) -> Void) {
         guard let url = url else {
             components(.failure(.explicitlyCancelled))
             return
@@ -49,7 +49,8 @@ final class NetworkManager {
             }
     }
     
-    func fetchRickAndMorty(from url: URL?, completion: @escaping(Result<RickAndMorty, NetworkError>) -> Void) {
+    
+    func fetchWithoutAF(from url: URL?, completion: @escaping(Result<RickAndMorty, NetworkError>) -> Void) {
         guard let url = url else {
             print("invalid link")
             return

@@ -19,7 +19,7 @@ final class CharacterListViewController: UITableViewController {
     // MARK: - Life Cycle ViewController
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchRickAandMorty(from: networkManager.linkRickAndMorty)
+        fetchWithAF(from: networkManager.linkRickAndMorty)
 //        fetchRAM(from: networkManager.linkRickAndMorty)
         
     }
@@ -52,18 +52,16 @@ final class CharacterListViewController: UITableViewController {
     @IBAction func updateData(_ sender: UIBarButtonItem) {
         if sender.tag == 1 {
             guard let nextUrl = rickAndMorty?.info.next else {
-                print("no next link")
-                return
+                return print("Does't URL")
             }
-            fetchRAM(from: nextUrl)
-//            fetchRickAandMorty(from: nextUrl)
+            fetchWithoutAF(from: nextUrl)
+//            fetchWithAF(from: rickAndMorty?.info.next)
         } else {
             guard let prevUrl = rickAndMorty?.info.prev else {
-                print("no prev link")
-                return
+                return print("Does't URL")
             }
-            fetchRAM(from: prevUrl)
-//            fetchRickAandMorty(from: prevUrl)
+            fetchWithoutAF(from: prevUrl)
+//            fetchWithAF(from: rickAndMorty?.info.prev)
         }
     }
     
@@ -74,8 +72,8 @@ final class CharacterListViewController: UITableViewController {
 
 // MARK: - Networking
 extension CharacterListViewController {
-    func fetchRickAandMorty(from url: URL?) {
-        networkManager.fetchRAM(from: networkManager.linkRickAndMorty) { [weak self] result in
+    func fetchWithAF(from url: URL?) {
+        networkManager.fetchWithAF(from: networkManager.linkRickAndMorty) { [weak self] result in
             switch result {
             case .success(let rickAndMorty):
                 self?.rickAndMorty = rickAndMorty
@@ -86,11 +84,11 @@ extension CharacterListViewController {
         }
     }
     
-    func fetchRAM( from url: URL) {
-        networkManager.fetchRickAndMorty(from: url) { [weak self] result in
+    func fetchWithoutAF( from url: URL) {
+        networkManager.fetchWithoutAF(from: url) { [weak self] result in
             switch result {
-            case .success(let ric):
-                self?.rickAndMorty = ric
+            case .success(let rickAndMorty):
+                self?.rickAndMorty = rickAndMorty
                 self?.tableView.reloadData()
             case .failure(let failure):
                 print(failure)

@@ -28,6 +28,8 @@ class CharacterViewController: UIViewController {
         characterStatusLabel.text = character.status
         characterSpeciesLabel.text = character.species
         characterGenderLabel.text = character.gender
+        characterOriginLabel.text = character.origin.name
+        characterLocationLabel.text = character.location.name
         
         networkManager.fetchImage(from: character.image) { [weak self] result in
             switch result {
