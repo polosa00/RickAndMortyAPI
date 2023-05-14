@@ -49,7 +49,6 @@ final class NetworkManager {
             }
     }
     
-    
     func fetchWithoutAF(from url: URL?, completion: @escaping(Result<RickAndMorty, NetworkError>) -> Void) {
         guard let url = url else {
             print("invalid link")
@@ -74,6 +73,20 @@ final class NetworkManager {
                 completion(.failure(.decodingError))
             }
         }.resume()
+    }
+    
+    func fetchManual(from url: URL, completion: @escaping(Result<[Character], AFError>) -> Void) {
+        AF.request(url)
+            .validate()
+            .responseJSON { dataResponse in
+                switch dataResponse.result {
+                case .success(let value):
+                    let characters = Character.getCharacter(from: value)
+                    completion(.success(characters))
+                case .failure(let error):
+                    completion(.failure(error))
+                }
+            }
     }
 
 }

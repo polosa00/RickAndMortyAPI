@@ -6,7 +6,7 @@
 //
 
 import UIKit
-//import Alamofire
+import Alamofire
 
 final class CharacterListViewController: UITableViewController {
     
@@ -19,8 +19,9 @@ final class CharacterListViewController: UITableViewController {
     // MARK: - Life Cycle ViewController
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchWithAF(from: networkManager.linkRickAndMorty)
-//        fetchRAM(from: networkManager.linkRickAndMorty)
+//        fetchWithAF(from: networkManager.linkRickAndMorty)
+        fetchWithoutAF(from: networkManager.linkRickAndMorty)
+        fethDataManual()
         
     }
     
@@ -50,23 +51,23 @@ final class CharacterListViewController: UITableViewController {
     
     
     @IBAction func updateData(_ sender: UIBarButtonItem) {
-        if sender.tag == 1 {
-            guard let nextUrl = rickAndMorty?.info.next else {
-                return print("Does't URL")
-            }
-            fetchWithoutAF(from: nextUrl)
-//            fetchWithAF(from: rickAndMorty?.info.next)
-        } else {
-            guard let prevUrl = rickAndMorty?.info.prev else {
-                return print("Does't URL")
-            }
-            fetchWithoutAF(from: prevUrl)
-//            fetchWithAF(from: rickAndMorty?.info.prev)
-        }
+//        if sender.tag == 1 {
+//            guard let nextUrl = rickAndMorty?.info.next else {
+//                return print("Does't URL")
+//            }
+//            fetchWithoutAF(from: nextUrl)
+//        } else {
+//            guard let prevUrl = rickAndMorty?.info.prev else {
+//                return print("Does't URL")
+//            }
+//            fetchWithoutAF(from: prevUrl)
+//
+//        }
+
+//         sender.tag == 1
+//            ? fetchWithAF(from: rickAndMorty?.info.next)
+//            : fetchWithAF(from: rickAndMorty?.info.prev)
     }
-    
-    
-    
     
 }
 
@@ -92,6 +93,19 @@ extension CharacterListViewController {
                 self?.tableView.reloadData()
             case .failure(let failure):
                 print(failure)
+            }
+        }
+    }
+    
+    func fethDataManual() {
+        networkManager.fetchManual(from: networkManager.linkRickAndMorty) { [weak self] result in
+            switch result {
+            case .success(let characters):
+                self?.rickAndMorty?.results = characters
+                self?.tableView.reloadData()
+                print(characters)
+            case .failure(let error):
+                print(error)
             }
         }
     }

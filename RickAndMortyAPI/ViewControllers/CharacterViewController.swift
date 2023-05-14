@@ -28,16 +28,16 @@ class CharacterViewController: UIViewController {
         characterStatusLabel.text = character.status
         characterSpeciesLabel.text = character.species
         characterGenderLabel.text = character.gender
-        characterOriginLabel.text = character.origin.name
-        characterLocationLabel.text = character.location.name
+//        characterOriginLabel.text = character.origin.name
+//        characterLocationLabel.text = character.location.name
         
-        networkManager.fetchImage(from: character.image) { [weak self] result in
-            switch result {
-            case .success(let imageData):
-                self?.characterImage.image = UIImage(data: imageData)
-            case .failure(let error):
-                print(error)
-            }
-        }
+//        networkManager.fetchImage(from: character.image) { [weak self] result in
+//            switch result {
+//            case .success(let imageData):
+//                self?.characterImage.image = UIImage(data: imageData)
+//            case .failure(let error):
+//                print(error)
+//            }
+//        }
     }
 }
