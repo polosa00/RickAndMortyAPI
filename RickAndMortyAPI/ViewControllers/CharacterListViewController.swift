@@ -52,7 +52,6 @@ final class CharacterListViewController: UITableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
-    
     @IBAction func updateData(_ sender: UIBarButtonItem) {
 //        if sender.tag == 1 {
 //            guard let nextUrl = rickAndMorty?.info.next else {

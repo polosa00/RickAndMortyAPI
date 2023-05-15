@@ -36,7 +36,7 @@ final class CharacterViewController: UIViewController {
             case .success(let imageData):
                 self?.characterImage.image = UIImage(data: imageData)
             case .failure(let error):
-                print(error.localizedDescription)
+                print(error)
             }
         }
     }

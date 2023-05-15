@@ -93,11 +93,9 @@ final class NetworkManager {
                 case .success(let value):
                     let characters = Character.getCharacter(from: value)
                     completion(.success(characters))
-                    
                 case .failure(let error):
                     completion(.failure(error))
                 }
             }
     }
-
 }
