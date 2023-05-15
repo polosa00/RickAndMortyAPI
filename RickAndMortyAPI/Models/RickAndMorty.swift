@@ -51,7 +51,6 @@ struct Character:Decodable {
         guard let charactersData = resultsData as? [[String: Any]] else { return []}
         
         return charactersData.map { Character(from: $0) }
-        print(charactersData.count)
     }
         
         
