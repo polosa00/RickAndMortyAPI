@@ -8,6 +8,17 @@
 import Foundation
 import Alamofire
 
+enum Link {
+    case urlRickAndMorty
+    
+    var url: URL {
+        switch self {
+        case .urlRickAndMorty:
+            return URL(string: "https://rickandmortyapi.com/api/character")!
+        }
+    }
+}
+
 enum NetworkError: Error {
     case noData
     case decodingError
@@ -15,9 +26,7 @@ enum NetworkError: Error {
 
 final class NetworkManager {
     static let shared = NetworkManager()
-   
-    let linkRickAndMorty = URL(string: "https://rickandmortyapi.com/api/character")!
-    
+       
     private init() {}
     
     func fetchImage(from url: URL, completion: @escaping (Result<Data, NetworkError>) -> Void) {
@@ -83,6 +92,7 @@ final class NetworkManager {
                 case .success(let value):
                     let characters = Character.getCharacter(from: value)
                     completion(.success(characters))
+                    
                 case .failure(let error):
                     completion(.failure(error))
                 }

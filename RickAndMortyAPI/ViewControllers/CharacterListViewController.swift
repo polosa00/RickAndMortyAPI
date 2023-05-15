@@ -19,8 +19,8 @@ final class CharacterListViewController: UITableViewController {
     // MARK: - Life Cycle ViewController
     override func viewDidLoad() {
         super.viewDidLoad()
-//        fetchWithAF(from: networkManager.linkRickAndMorty)
-        fetchWithoutAF(from: networkManager.linkRickAndMorty)
+//        fetchWithAF(from: Link.urlRickAndMorty.url)
+//        fetchWithoutAF(from: Link.urlRickAndMorty.url)
         fethDataManual()
         
     }
@@ -74,7 +74,7 @@ final class CharacterListViewController: UITableViewController {
 // MARK: - Networking
 extension CharacterListViewController {
     func fetchWithAF(from url: URL?) {
-        networkManager.fetchWithAF(from: networkManager.linkRickAndMorty) { [weak self] result in
+        networkManager.fetchWithAF(from: Link.urlRickAndMorty.url) { [weak self] result in
             switch result {
             case .success(let rickAndMorty):
                 self?.rickAndMorty = rickAndMorty
@@ -98,12 +98,12 @@ extension CharacterListViewController {
     }
     
     func fethDataManual() {
-        networkManager.fetchManual(from: networkManager.linkRickAndMorty) { [weak self] result in
+        networkManager.fetchManual(from: Link.urlRickAndMorty.url) { [weak self] result in
             switch result {
             case .success(let characters):
                 self?.rickAndMorty?.results = characters
                 self?.tableView.reloadData()
-                print(characters)
+                print(characters.count)
             case .failure(let error):
                 print(error)
             }
