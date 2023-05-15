@@ -13,6 +13,7 @@ final class CharacterListViewController: UITableViewController {
     // MARK: - Private Properties
     private let networkManager = NetworkManager.shared
     private var rickAndMorty: RickAndMorty?
+    private var characters: [Character] = []
     private var nextPage: URL?
 
     
@@ -27,20 +28,23 @@ final class CharacterListViewController: UITableViewController {
     
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        rickAndMorty?.results.count ?? 0
+//        rickAndMorty?.results.count ?? 0
+        characters.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "characterCell", for: indexPath)
         guard let cell = cell as? CharacterViewCell else { return UITableViewCell()}
-        let character = rickAndMorty?.results[indexPath.row]
-        cell.configure(with: character!)
+//        let character = rickAndMorty?.results[indexPath.row]
+        let character = characters[indexPath.row]
+        cell.configure(with: character)
         return cell
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let indexPath = tableView.indexPathForSelectedRow else { return }
-        let character = rickAndMorty?.results[indexPath.row]
+//        let character = rickAndMorty?.results[indexPath.row]
+        let character = characters[indexPath.row]
         guard let characterVC = segue.destination as? CharacterViewController else { return }
         characterVC.character = character
     }
@@ -101,7 +105,7 @@ extension CharacterListViewController {
         networkManager.fetchManual(from: Link.urlRickAndMorty.url) { [weak self] result in
             switch result {
             case .success(let characters):
-                self?.rickAndMorty?.results = characters
+                self?.characters = characters
                 self?.tableView.reloadData()
                 print(characters.count)
             case .failure(let error):
